@@ -1,0 +1,11 @@
+package Genealogy
+   context Person::ancestry():Set(Person)
+      body: self->closure(x | Person.allInstances()->select(y | ((y.oclIsKindOf(Man) and x.father->includes(y.oclAsType(Man))) or (y.oclIsKindOf(Woman) and x.mother->includes(y.oclAsType(Woman))))))
+   context Person
+      inv: not self.ancestry()->includes(self)
+   context Person
+      inv: Nationality.allInstances()->forAll(n | self.nationality->includes(n) implies self.ancestry()->exists(p | p.nationality->includes(n)))
+   context Person::change(n:Nationality)
+      pre: self.ancestry()->exists(p | p.nationality->includes(n))
+      post: self.nationality->includes(n)
+endpackage

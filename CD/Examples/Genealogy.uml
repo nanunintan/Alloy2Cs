@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+ <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" name='Genealogy'> 
+		 
+ <packagedElement xmi:type='uml:Class' xmi:id='Person' name='Person' isAbstract='true' >
+	 <ownedAttribute xmi:type='uml:Property' xmi:id='father' name='father' isReadOnly='true'>
+		<type xmi:idref="Man"/>
+				<upperValue xmi:type='uml:LiteralUnlimitedNatural' value='1' />
+				<lowerValue xmi:type='uml:LiteralInteger' value='0' />
+	 </ownedAttribute>
+	 <ownedAttribute xmi:type='uml:Property' xmi:id='mother' name='mother' isReadOnly='true'>
+		<type xmi:idref="Woman"/>
+				<upperValue xmi:type='uml:LiteralUnlimitedNatural' value='1' />
+				<lowerValue xmi:type='uml:LiteralInteger' value='0' />
+	 </ownedAttribute>
+	 <ownedAttribute xmi:type='uml:Property' xmi:id='nationality' name='nationality' isReadOnly='false'>
+		<type xmi:idref="Nationality"/>
+				<upperValue xmi:type='uml:LiteralUnlimitedNatural' value='1' />
+				<lowerValue xmi:type='uml:LiteralInteger' value='1' />
+	 </ownedAttribute>
+	 <ownedOperation xmi:type='uml:Operation' name='ancestry'>
+		 <ownedParameter xmi:type='uml:Parameter' type='Person' direction='return'>
+				<upperValue xmi:type='uml:LiteralUnlimitedNatural' value='-1' />
+				<lowerValue xmi:type='uml:LiteralInteger' value='0' />
+		 </ownedParameter>
+	 </ownedOperation>
+
+	 <ownedOperation xmi:type='uml:Operation' name='change'>
+		 <ownedParameter xmi:type='uml:Parameter' name='a' type='Nationality'/>
+	 </ownedOperation>
+ </packagedElement>
+
+ <packagedElement xmi:type='uml:Class' xmi:id='Man' name='Man' isAbstract='false' >
+	<generalization xmi:type='uml:Generalization' general='Person' />
+ </packagedElement>
+
+ <packagedElement xmi:type='uml:Class' xmi:id='Woman' name='Woman' isAbstract='false' >
+	<generalization xmi:type='uml:Generalization' general='Person' />
+ </packagedElement>
+
+ <packagedElement xmi:type='uml:Enumeration' xmi:id='Nationality' name='Nationality'>
+			 <ownedLiteral xmi:type='uml:EnumerationLiteral' name='Argentine'/>
+			 <ownedLiteral xmi:type='uml:EnumerationLiteral' name='Portuguese'/>
+ </packagedElement> 
+ </uml:Package>

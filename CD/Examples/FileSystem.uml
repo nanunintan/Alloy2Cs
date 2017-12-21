@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+ <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" name='FileSystem'> 
+		 
+
+ <packagedElement xmi:type='uml:Class' xmi:id='Dir' name='Dir' isAbstract='false' >
+
+	<generalization xmi:type='uml:Generalization' general='Object' />
+ </packagedElement>
+
+ <packagedElement xmi:type='uml:Class' xmi:id='File' name='File' isAbstract='false' >
+
+	<generalization xmi:type='uml:Generalization' general='Object' />
+ </packagedElement>
+
+ <packagedElement xmi:type='uml:Class' xmi:id='FileSystem' name='FileSystem' isAbstract='false' >
+
+	 <ownedAttribute xmi:type='uml:Property' xmi:id='objects' name='objects' isReadOnly='false'>
+		<type xmi:idref="Object"/>
+				<upperValue xmi:type='uml:LiteralUnlimitedNatural' value='-1' />
+				<lowerValue xmi:type='uml:LiteralInteger' value='0' />
+	 </ownedAttribute>
+
+	 <ownedAttribute xmi:type='uml:Property' xmi:id='root' name='root' isReadOnly='false'>
+		<type xmi:idref="Dir"/>
+				<upperValue xmi:type='uml:LiteralUnlimitedNatural' value='1' />
+				<lowerValue xmi:type='uml:LiteralInteger' value='1' />
+	 </ownedAttribute>
+
+	 <ownedAttribute xmi:type='uml:Property' xmi:id='wd' name='wd' isReadOnly='false'>
+		<type xmi:idref="Dir"/>
+				<upperValue xmi:type='uml:LiteralUnlimitedNatural' value='1' />
+				<lowerValue xmi:type='uml:LiteralInteger' value='1' />
+	 </ownedAttribute>
+
+	 <ownedOperation xmi:type='uml:Operation' name='ls'>
+		 <ownedParameter xmi:type='uml:Parameter' type='Object' direction='return'>
+				<upperValue xmi:type='uml:LiteralUnlimitedNatural' value='-1' />
+				<lowerValue xmi:type='uml:LiteralInteger' value='0' />
+		 </ownedParameter>
+	 </ownedOperation>
+
+	 <ownedOperation xmi:type='uml:Operation' name='rm'>
+		 <ownedParameter xmi:type='uml:Parameter' name='a' type='File'/>
+	 </ownedOperation>
+
+	 <ownedOperation xmi:type='uml:Operation' name='cd'>
+		 <ownedParameter xmi:type='uml:Parameter' name='a' type='Dir'/>
+	 </ownedOperation>
+ </packagedElement>
+
+ <packagedElement xmi:type='uml:Class' xmi:id='Name' name='Name' isAbstract='false' >
+
+ </packagedElement>
+
+ <packagedElement xmi:type='uml:Class' xmi:id='Object' name='Object' isAbstract='true' >
+
+	 <ownedAttribute xmi:type='uml:Property' xmi:id='name' name='name' isReadOnly='true'>
+		<type xmi:idref="Name"/>
+				<upperValue xmi:type='uml:LiteralUnlimitedNatural' value='1' />
+				<lowerValue xmi:type='uml:LiteralInteger' value='1' />
+	 </ownedAttribute>
+
+	 <ownedAttribute xmi:type='uml:Property' xmi:id='parent' name='parent' isReadOnly='false'>
+		<type xmi:idref="Dir"/>
+				<upperValue xmi:type='uml:LiteralUnlimitedNatural' value='1' />
+				<lowerValue xmi:type='uml:LiteralInteger' value='0' />
+	 </ownedAttribute>
+ </packagedElement> 
+ </uml:Package>

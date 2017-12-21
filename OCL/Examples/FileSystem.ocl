@@ -1,0 +1,24 @@
+package FileSystem
+   context Object
+      inv: Object.allInstances()->forAll(y | ((Dir.allInstances()->exists(v3 | (self.parent->includes(v3) and y.parent->includes(v3))) and (not (y = self))) implies (not Name.allInstances()->forAll(v0 | (self.name->includes(v0) implies y.name->includes(v0))))))
+   context Object
+      inv: (not self->closure(v9 | v9.parent->asSet())->includes(self))
+   context FileSystem
+      inv: Dir.allInstances()->forAll(v12 | ((self.root->includes(v12) or self.wd->includes(v12)) implies self.objects->includes(v12)))
+   context FileSystem
+      inv: Object.allInstances()->forAll(o | (self.objects->includes(o) implies Dir.allInstances()->forAll(v17 | (o.parent->includes(v17) implies self.objects->includes(v17)))))
+   context FileSystem
+      inv: Object.allInstances()->forAll(v24 | (self.objects->includes(v24) implies Dir.allInstances()->exists(v27 | (((v24 = v27) or v24->closure(v28 | v28.parent->asSet())->includes(v27)) and self.root->includes(v27)))))
+   context FileSystem::ls():Set(Object)
+      body: Object.allInstances()->select(v33 | (Dir.allInstances()->exists(v34 | (v33.parent->includes(v34) and self.wd->includes(v34))) and self.objects->includes(v33)))
+   context FileSystem::rm(f:File)
+      pre: self.ls()->includes(f)
+      post: (Object.allInstances()->forAll(v43 | (self.objects->includes(v43) implies (self.objects@pre->includes(v43) and (not (v43 = f))))) and Object.allInstances()->forAll(v48 | ((self.objects@pre->includes(v48) and (not (v48 = f))) implies self.objects->includes(v48))))
+      post: (Dir.allInstances()->forAll(v53 | (self.root->includes(v53) implies self.root@pre->includes(v53))) and Dir.allInstances()->forAll(v58 | (self.root@pre->includes(v58) implies self.root->includes(v58))))
+      post: (Dir.allInstances()->forAll(v63 | (self.wd->includes(v63) implies self.wd@pre->includes(v63))) and Dir.allInstances()->forAll(v68 | (self.wd@pre->includes(v68) implies self.wd->includes(v68))))
+   context FileSystem::cd(d:Dir)
+      pre: self.objects->includes(d)
+      post: (Dir.allInstances()->forAll(v76 | (self.wd->includes(v76) implies (v76 = d))) and self.wd->includes(d))
+      post: (Object.allInstances()->forAll(v82 | (self.objects->includes(v82) implies self.objects@pre->includes(v82))) and Object.allInstances()->forAll(v87 | (self.objects@pre->includes(v87) implies self.objects->includes(v87))))
+      post: (Dir.allInstances()->forAll(v92 | (self.root->includes(v92) implies self.root@pre->includes(v92))) and Dir.allInstances()->forAll(v97 | (self.root@pre->includes(v97) implies self.root->includes(v97))))
+endpackage

@@ -1,0 +1,21 @@
+package AddressBook
+   context Book
+      inv: Name.allInstances()->forAll(v0 | (Target.allInstances()->exists(v1 | self.addr[v0]->includes(v1)) implies self.names->includes(v0)))
+   context Book
+      inv: Name.allInstances()->forAll(v6 | (Name.allInstances()->exists(v7 | self.addr[v7]->includes(v6)) implies self.names->includes(v6)))
+   context Book
+      inv: Name.allInstances()->forAll(n | (self.names->includes(n) implies (self.addr[n]->size() >= 1)))
+   context Book
+      inv: Name.allInstances()->select(n | n.oclAsType(Target)->closure(v20 | Target.allInstances()->select(v21 | (v20.oclIsKindOf(Name) and self.addr[v20.oclAsType(Name)]->includes(v21))))->includes(n))->isEmpty()
+   context Book
+      inv: Name.allInstances()->forAll(n | (n.type->includes(Type::Alias) implies (self.addr[n]->size() <= 1)))
+   context Book
+      inv: Name.allInstances()->forAll(n | (Addr.allInstances()->select(v29 | (self.addr[n]->includes(v29) and v29.email))->size() <= 1))
+   context Book::add(n:Name,a:Target)
+      pre: self.names->includes(n)
+      pre: (not self.addr[n]->includes(a))
+      post: Name.allInstances()->forAll(v40 | Target.allInstances()->forAll(v41 | (self.addr[v40]->includes(v41) implies (self.addr@pre[v40]->includes(v41) or ((v40 = n) and (v41 = a))))))
+      post: (Name.allInstances()->forAll(v46 | (self.names->includes(v46) implies self.names@pre->includes(v46))) and Name.allInstances()->forAll(v51 | (self.names@pre->includes(v51) implies self.names->includes(v51))))
+   context Book::lookup(n:Name):Set(Addr)
+      body: n.oclAsType(Target)->closure(v58 | Target.allInstances()->select(v59 | (v58.oclIsKindOf(Name) and self.addr[v58.oclAsType(Name)]->includes(v59))))
+endpackage

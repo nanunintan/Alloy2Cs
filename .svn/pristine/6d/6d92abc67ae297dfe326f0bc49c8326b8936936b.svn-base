@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8'?>
+ <uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" name='Student'> 
+		 
+
+ <packagedElement xmi:type='uml:Class' xmi:id='College' name='College' isAbstract='false' >
+
+	 <ownedAttribute xmi:type='uml:Property' xmi:id='students' name='students' isReadOnly='false'>
+		<type xmi:idref="Student"/>
+				<upperValue xmi:type='uml:LiteralUnlimitedNatural' value='-1' />
+				<lowerValue xmi:type='uml:LiteralInteger' value='0' />
+	 </ownedAttribute>
+
+	 <ownedAttribute xmi:type='uml:Property' xmi:id='courses' name='courses' isReadOnly='true'>
+		<type xmi:idref="Course"/>
+				<upperValue xmi:type='uml:LiteralUnlimitedNatural' value='-1' />
+				<lowerValue xmi:type='uml:LiteralInteger' value='0' />
+	 </ownedAttribute>
+
+	 <ownedOperation xmi:type='uml:Operation' name='newstudent'>
+		 <ownedParameter xmi:type='uml:Parameter' name='a' type='Student'/>
+	 </ownedOperation>
+ </packagedElement>
+
+ <packagedElement xmi:type='uml:Class' xmi:id='Course' name='Course' isAbstract='false' >
+
+	 <ownedAttribute xmi:type='uml:Property' xmi:id='labs' name='labs' isReadOnly='true'>
+		<type xmi:idref="Lab"/>
+				<upperValue xmi:type='uml:LiteralUnlimitedNatural' value='-1' />
+				<lowerValue xmi:type='uml:LiteralInteger' value='1' />
+	 </ownedAttribute>
+ </packagedElement>
+
+ <packagedElement xmi:type='uml:Class' xmi:id='Lab' name='Lab' isAbstract='false' >
+
+ </packagedElement>
+
+ <packagedElement xmi:type='uml:Class' xmi:id='Name' name='Name' isAbstract='false' >
+
+ </packagedElement>
+
+ <packagedElement xmi:type='uml:Class' xmi:id='Student' name='Student' isAbstract='false' >
+
+	 <ownedAttribute xmi:type='uml:Property' xmi:id='name' name='name' isReadOnly='true'>
+		<type xmi:idref="Name"/>
+				<upperValue xmi:type='uml:LiteralUnlimitedNatural' value='1' />
+				<lowerValue xmi:type='uml:LiteralInteger' value='1' />
+	 </ownedAttribute>
+
+	 <ownedAttribute xmi:type='uml:Property' xmi:id='approved' name='approved' isReadOnly='false'>
+		<type xmi:idref="Course"/>
+				<upperValue xmi:type='uml:LiteralUnlimitedNatural' value='-1' />
+				<lowerValue xmi:type='uml:LiteralInteger' value='0' />
+	 </ownedAttribute>
+
+	 <ownedAttribute xmi:type='uml:Property' xmi:id='current' name='current' isReadOnly='false'>
+		<type xmi:idref="Course"/>
+				<upperValue xmi:type='uml:LiteralUnlimitedNatural' value='1' />
+				<lowerValue xmi:type='uml:LiteralInteger' value='0' />
+	 </ownedAttribute>
+
+	 <ownedAttribute xmi:type='uml:Property' xmi:id='donelabs' name='donelabs' isReadOnly='false'>
+		<type xmi:idref="Lab"/>
+				<upperValue xmi:type='uml:LiteralUnlimitedNatural' value='-1' />
+				<lowerValue xmi:type='uml:LiteralInteger' value='0' />
+	 </ownedAttribute>
+
+	 <ownedAttribute xmi:type='uml:Property' xmi:id='exams' name='exams' isReadOnly='false'>
+		<type xmi:idref="Grade"/>
+				<upperValue xmi:type='uml:LiteralUnlimitedNatural' value='1' />
+				<lowerValue xmi:type='uml:LiteralInteger' value='0' />
+		 <qualifier name='a' type='Course' />
+	 </ownedAttribute>
+
+	 <ownedOperation xmi:type='uml:Operation' name='enroll'>
+		 <ownedParameter xmi:type='uml:Parameter' name='a' type='Course'/>
+	 </ownedOperation>
+
+	 <ownedOperation xmi:type='uml:Operation' name='lab'>
+		 <ownedParameter xmi:type='uml:Parameter' name='a' type='Lab'/>
+	 </ownedOperation>
+
+	 <ownedOperation xmi:type='uml:Operation' name='exam'>
+		 <ownedParameter xmi:type='uml:Parameter' name='a' type='Grade'/>
+	 </ownedOperation>
+
+	 <ownedOperation xmi:type='uml:Operation' name='approve'>
+	 </ownedOperation>
+
+	 <ownedOperation xmi:type='uml:Operation' name='quit'>
+	 </ownedOperation>
+ </packagedElement>
+
+ <packagedElement xmi:type='uml:Enumeration' xmi:id='Grade' name='Grade'>
+			 <ownedLiteral xmi:type='uml:EnumerationLiteral' name='A'/>
+			 <ownedLiteral xmi:type='uml:EnumerationLiteral' name='B'/>
+			 <ownedLiteral xmi:type='uml:EnumerationLiteral' name='C'/>
+			 <ownedLiteral xmi:type='uml:EnumerationLiteral' name='D'/>
+			 <ownedLiteral xmi:type='uml:EnumerationLiteral' name='E'/>
+ </packagedElement> 
+ </uml:Package>
