@@ -1,7 +1,7 @@
 module Cs.Pretty (pretty) where
 
 import Text.PrettyPrint
-import Prelude hiding (EQ,GT,LT)
+import Prelude hiding (EQ,GT,LT, (<>))
 import Cs.AST
 import Data.Char
 
