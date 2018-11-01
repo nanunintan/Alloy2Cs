@@ -1,24 +1,22 @@
 # Alloy2Cs (Alloy to C#)
 This project intends to contribute to the AlloyMDA project, adding support for transforming Alloy models into C# models to be used with Microsoft's official ORM, Entity Framework (EF).
 
-The generated C# code is ready to be used in a project with Entity Framework Core using the Code First approach in order to create the structure of the database through Migrations.
+The generated C# code is ready to be used in a project with Entity Framework using the Code First approach in order to create the structure of the database through Migrations.
 
 ## How to use Alloy2Cs
 1. Get [Alloy2Cs](https://github.com/nanunintan/Alloy2Cs.git) (this already includes the AlloyMDA project)
-1. Download and install [Haskell](https://www.haskell.org/platform/)
-1. Get [Cabal's](https://www.haskell.org/cabal/) latest list of packages by running `cabal update`. Cabal is a system for building and packaging Haskell libraries and programs.
-1. Open a new terminal window and go to the project folder
-1. Run `cabal sandbox init` to initialize a sandbox environment to avoid package conflicts between different projects.
-1. Install dependencies with `cabal install mtl syb parsec`.
-1. Open the `Makefile` file and copy the appropriate command to create the executable. Then run `ghc --make Tools/Alloy2Cs.hs -o alloy2cs`.
-1. Run the tool: `alloy2cs < Alloy/Examples/Book.als`
+2. Download and install [Haskell](https://www.haskell.org/platform/)
+3. Get [Cabal's](https://www.haskell.org/cabal/) latest list of packages by running `cabal update`. Cabal is a system for building and packaging Haskell libraries and programs.
+4. Open a new terminal window and go to the project folder
+5. Run `cabal sandbox init` to initialize a sandbox environment to avoid package conflicts between different projects.
+6. Install dependencies with `cabal install mtl syb parsec`.
+7. Compile and create the tool by running `ghc --make Tools/Alloy2Cs.hs -o alloy2cs`.
+8. Run the tool: `alloy2cs < Alloy/Examples/Book.als`
 
 ## Supported EF versions
 Entity Framework (EF) is the Microsoft's official ORM tool. There are currently two versions:
 - Entity Framework 6 (EF6), a tested, stable data access technology with lots of features.
 - Entity Framework Core (EF Core), a lightweight, extensible, and cross-platform version of Entity Framework.
-
-Alloy2Cs is mainly designed to be used with EF Core, however it could easily be used with EF 6 since both implement the same basic class mapping.
 
 It means Alloy2Cs could be used with:
 - EF Core 1.x
